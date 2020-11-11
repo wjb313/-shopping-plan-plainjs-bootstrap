@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+
+    <title>ShopPlan</title>
+
+    <meta
+      name="description"
+      content="This project is an app that helps assist in the process of amassing a grocery/household staples list via a weekly menu plan."
+    />
+    <meta name="author" content="wjb" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="./icons/favicon.ico" type="image/x-icon" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="styles/bootstrap.css"
+      media="screen"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="styles/site.css"
+      media="screen"
+    />
+
+    <script defer src="scripts/shoplist.js"></script>
+  </head>
+
+  <body>
+    <main>
+      <!-- THIS IS WHERE THE SHOPPLING LIST PAGE BEGINS -->
+      <div data-js-sli-display>
+        <!-- HEADER AND NAV FOR SLI PAGE -->
+        <nav class="navbar navbar-dark fixed-top bg-success">
+          <header data-js-dmp-header>
+            <h1>ShopPlan Pro</h1>
+            <ul class="nav navbar-nav mr-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="index.html">Dinner Menu Plan</a>
+              </li>
+              <li class="nav-item active">
+                <a class="nav-link" href="shoplist.html">Shopping List</a>
+              </li>
+            </ul>
+          </header>
+        </nav>
+        <div>
+          <header>
+            <p data-js-list-count></p>
+            <button data-js-btn-add-item>Add Item</button>
+          </header>
+        </div>
+
+        <!-- listWrapper ==> ALL NEW LIST ITEMS ARE APPENDED UNDER THIS DIV -->
+        <div data-js-list-body></div>
+        <!-- SLI FOOTER CONTAINER - BTNS TO CLEAR TASKS -->
+        <div>
+          <footer>
+            <button data-js-btn-clear-completed>Clear Completed Items</button>
+            <button data-js-btn-clear-all>Clear All Items</button>
+          </footer>
+        </div>
+      </div>
+      <!-- THIS IS WHERE THE SHOPPLING LIST PAGE ENDS -->
+    </main>
+    <!-- **** SHOPPING LIST NEW ITEM MODAL **** -->
+    <div class="modal" data-js-add-item-modal>
+      <!-- Modal content -->
+      <div>
+        <header>
+          <h2>New Item</h2>
+        </header>
+        <form action="" data-js-add-item-form="new">
+          <label for="itemName">Name</label>
+          <input type="text" data-js-add-item-name />
+          <label for="itemType">Type</label>
+          <select data-js-add-item-type>
+            <option value=""></option>
+            <option value="vegetable">Vegetable</option>
+            <option value="fruit">Fruit</option>
+            <option value="refrigerated">Refrigerated</option>
+            <option value="drygoods">Dry Goods</option>
+            <option value="bakery">Bakery</option>
+            <option value="meat">Meat</option>
+            <option value="fish">Fish</option>
+            <option value="miscellaneous">Miscellaneous</option>
+          </select>
+          <label for="itemQuantity">Quantity</label>
+          <input type="number" value="1" min="1" data-js-add-item-quantity />
+          <label for="itemUnits">Units (optional)</label>
+          <select data-js-add-item-units>
+            Units
+            <option value=""></option>
+            <option value="teaspoon">tsp</option>
+            <option value="tablespoon">tbsp</option>
+            <option value="fluid ounce">fl oz</option>
+            <option value="cup">c</option>
+            <option value="gallon">gal</option>
+            <option value="ounce">oz</option>
+            <option value="pound">lb</option>
+            <option value="bag">bag</option>
+            <option value="box">box</option>
+            <option value="can">can</option>
+            <option value="jar">jar</option>
+          </select>
+          <footer>
+            <button>Enter</button>
+            <button data-js-add-item-close>Close</button>
+          </footer>
+        </form>
+      </div>
+    </div>
+    <!-- **** CLEAR COMPLETED SHOPPING LIST ITEMS MODAL **** -->
+    <div class="modal" data-js-clear-completed-modal>
+      <!-- Modal content -->
+      <div>
+        <header>
+          <h2>Clear Completed Items</h2>
+        </header>
+        <p>You Sure?!?</p>
+        <footer>
+          <button data-js-clear-completed-yes>Yes</button>
+          <button data-js-clear-completed-no>No</button>
+        </footer>
+      </div>
+    </div>
+    <!-- **** CLEAR ALL SHOPPING LIST ITEMS MODAL **** -->
+    <div class="modal" data-js-clear-all-modal>
+      <!-- Modal content -->
+      <div>
+        <header>
+          <h2>Clear All Items</h2>
+        </header>
+        <p>You Sure?!?</p>
+        <footer>
+          <button data-js-clear-all-yes>Yes</button>
+          <button data-js-clear-all-no>No</button>
+        </footer>
+      </div>
+    </div>
+    <!-- **** NO SHOPPING LIST ITEMS TO CLEAR MODAL **** -->
+    <div class="modal" data-js-no-items-modal>
+      <!-- Modal content -->
+      <div>
+        <!-- <header >
+          <h2>There are no items to clear</h2>
+        </header> -->
+        <p>No items to clear</p>
+        <footer>
+          <button data-js-no-items-close>OK</button>
+        </footer>
+      </div>
+    </div>
+    <template id="listItemTemplate">
+      <div>
+        <input type="checkbox" />
+        <label>
+          <span></span>
+        </label>
+        <div data-js-sli-edit>Edit</div>
+      </div>
+    </template>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+    <script src="scripts/bootstrap.js"></script>
+  </body>
+</html>
